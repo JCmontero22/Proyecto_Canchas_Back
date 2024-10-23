@@ -24,6 +24,7 @@ class autController extends Controller
         return Responses::successSesion(200, 'Bienvenido', 'ha iniciado sesion satisfactoriamente', 'success', new loginResource($usuario), $token);
     }
 
+    //prueba
     public function logout(Request $request) {
         $request->user()->tokens()->delete();
         return Responses::sucess(200, 'Cierre de sesion', 'ha finalizado la sesion exitosamente', 'success');
