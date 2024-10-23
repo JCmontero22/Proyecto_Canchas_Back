@@ -16,3 +16,6 @@ Route::get('/user', function (Request $request) {
 Route::apiResource('usuarios', usuariosController::class);
 
 Route::post('login', [autController::class, 'login']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('logout', [autController::class, 'logout']);
+});

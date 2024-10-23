@@ -5,14 +5,13 @@ namespace App\Http\Responses;
 
 class Responses
 {
-    static function sucess($statusCode, $titulo, $mensaje, $icono, $data = [], $token = null){
+    static function sucess($statusCode, $titulo, $mensaje, $icono, $data = []){
         $respuesta = [
             'statusCode'    => $statusCode,
             'titulo'        => $titulo,
             'mensaje'       => $mensaje,
             'icono'         => $icono,
-            'data'          => $data,
-            'token'         => $token
+            'data'          => $data
         ];
 
         return response()->json($respuesta, $statusCode);
@@ -37,6 +36,19 @@ class Responses
             'mensaje'       => $mensaje,
             'icono'         => $icono,
             'data'          => $data
+        ];
+
+        return response()->json($respuesta);
+    }
+
+    static function successSesion($statusCode, $titulo, $mensaje, $icono, $data, $token) {
+        $respuesta = [
+            'statusCode'    => $statusCode,
+            'titulo'        => $titulo,
+            'mensaje'       => $mensaje,
+            'icono'         => $icono,
+            'data'          => $data,
+            'token'         => $token
         ];
 
         return response()->json($respuesta);

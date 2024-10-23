@@ -21,6 +21,12 @@ class autController extends Controller
         $usuario = User::where('email_usuario', $request->emailUsuario)->firstOrFail();
         $token = $usuario->createToken('api_token')->plainTextToken;
 
-        return Responses::sucess(200, 'Bienvenido', 'ha iniciado sesion satisfactoriamente', 'success', new loginResource($usuario), $token);
+        return Responses::successSesion(200, 'Bienvenido', 'ha iniciado sesion satisfactoriamente', 'success', new loginResource($usuario), $token);
     }
+
+    public function logout(Request $request) {
+        $request->user()->tokens()->delete();
+        return Responses::sucess(200, 'Cierre de sesion', 'ha finalizado la sesion exitosamente', 'success');
+    }
+
 }
